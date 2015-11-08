@@ -1,7 +1,7 @@
-name: "rambler_viper_controller"
-summary: "Basic VIPER module template with UIViewController playing as a View"
+name: "rviper_controller"
+summary: "VIPER module template with UIViewController playing as a View. Used in Rambler&Co and therefore requires some internal dependencies."
 author: "Egor Tolstoy"
-version: "1.0.0"
+version: "1.0.1"
 license: "MIT"
 
 code_files:
