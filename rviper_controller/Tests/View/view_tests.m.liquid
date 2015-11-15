@@ -45,6 +45,16 @@
 
 #pragma mark - Тестирование жизненного цикла
 
+- (void)testThatViewNotifiesPresenterOnDidLoad {
+	// given
+
+	// when
+	[self.controller viewDidLoad];
+
+	// then
+	OCMVerify([self.mockOutput didTriggerViewReadyEvent]);
+}
+
 #pragma mark - Тестирование методов интерфейса
 
 #pragma mark - Тестирование методов {{ prefix }}{{ module_info.name }}ViewInput

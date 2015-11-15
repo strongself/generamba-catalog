@@ -16,12 +16,16 @@
 
 #pragma mark - Методы {{ prefix }}{{ module_info.name }}ModuleInput
 
-- (void)configureCurrentModule {
-    [self.view setupInitialState];
+- (void)configureModule {
+    // Стартовая конфигурация модуля, не привязанная к состоянию view
+}
+
+#pragma mark - Методы {{ prefix }}{{ module_info.name }}ViewOutput
+
+- (void)didTriggerViewReadyEvent {
+	[self.view setupInitialState];
 }
 
 #pragma mark - Методы {{ prefix }}{{ module_info.name }}InteractorOutput
-
-#pragma mark - Методы {{ prefix }}{{ module_info.name }}ViewOutput
 
 @end

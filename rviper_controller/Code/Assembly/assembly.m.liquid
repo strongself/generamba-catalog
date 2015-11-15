@@ -27,6 +27,14 @@
                           }];
 }
 
+- ({{ prefix }}{{ module_info.name }}Interactor *)interactor{{ module_info.name }}Module {
+    return [TyphoonDefinition withClass:[{{ prefix }}{{ module_info.name }}Interactor class]
+                          configuration:^(TyphoonDefinition *definition) {
+                              [definition injectProperty:@selector(output)
+                                                    with:[self presenter{{ module_info.name }}Module]];
+                          }];
+}
+
 - ({{ prefix }}{{ module_info.name }}Presenter *)presenter{{ module_info.name }}Module {
     return [TyphoonDefinition withClass:[{{ prefix }}{{ module_info.name }}Presenter class]
                           configuration:^(TyphoonDefinition *definition) {
@@ -36,14 +44,6 @@
                                                     with:[self interactor{{ module_info.name }}Module]];
                               [definition injectProperty:@selector(router)
                                                     with:[self router{{ module_info.name }}Module]];
-                          }];
-}
-
-- ({{ prefix }}{{ module_info.name }}Interactor *)interactor{{ module_info.name }}Module {
-    return [TyphoonDefinition withClass:[{{ prefix }}{{ module_info.name }}Interactor class]
-                          configuration:^(TyphoonDefinition *definition) {
-                              [definition injectProperty:@selector(output)
-                                                    with:[self presenter{{ module_info.name }}Module]];
                           }];
 }
 

@@ -55,18 +55,18 @@
 
 #pragma mark - Тестирование методов {{ prefix }}{{ module_info.name }}ModuleInput
 
-- (void)testThatPresenterConfiguresModule {
+#pragma mark - Тестирование методов {{ prefix }}{{ module_info.name }}ViewOutput
+
+- (void)testThatPresenterHandlesViewReadyEvent {
     // given
 
 
     // when
-    [self.presenter configureCurrentModule];
+    [self.presenter didTriggerViewReadyEvent];
 
     // then
     OCMVerify([self.mockView setupInitialState]);
 }
-
-#pragma mark - Тестирование методов {{ prefix }}{{ module_info.name }}ViewOutput
 
 #pragma mark - Тестирование методов {{ prefix }}{{ module_info.name }}InteractorOutput
 
