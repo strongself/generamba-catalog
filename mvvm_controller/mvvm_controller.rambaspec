@@ -1,0 +1,21 @@
+# Template information section
+name: "mvvm_controller"
+summary: "MVVM module template with UIViewController playing as a View. Used in Yota."
+author: "Igor Vasilenko"
+version: "1.0"
+license: "MIT"
+
+# The declarations for code files
+code_files:
+# View layer
+- {name: ViewController/ViewController.h, path: Code/ViewController/ViewController.h.liquid}
+- {name: ViewController/ViewController.m, path: Code/ViewController/ViewController.m.liquid}
+- {name: ViewController/ViewController.xib, path: Code/ViewController/ViewController.xib.liquid}
+
+# ViewModel layer
+- {name: ViewModel/ViewModel.h, path: Code/ViewModel/ViewModel.h.liquid}
+- {name: ViewModel/ViewModel.m, path: Code/ViewModel/ViewModel.m.liquid}
+
+# Template dependencies
+dependencies:
+- Typhoon
