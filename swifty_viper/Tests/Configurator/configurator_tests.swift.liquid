@@ -27,7 +27,7 @@ class {{ module_info.name }}ModuleConfiguratorTests: XCTestCase {
         let configurator = {{ module_info.name }}ModuleConfigurator()
 
         //when
-        configurator.configureModuleForViewController(viewController)
+        configurator.configureModuleForViewInput(viewController)
 
         //then
         XCTAssertNotNil(viewController.output, "{{ module_info.name }}ViewController is nil after configuration")
@@ -40,5 +40,14 @@ class {{ module_info.name }}ModuleConfiguratorTests: XCTestCase {
 
         let interactor: {{ module_info.name }}Interactor = presenter.interactor as! {{ module_info.name }}Interactor
         XCTAssertNotNil(interactor.output, "output in {{ module_info.name }}Interactor is nil after configuration")
+    }
+
+    class {{ module_info.name }}ViewControllerMock: {{ module_info.name }}ViewController {
+
+        var setupInitialStateDidCall = false
+
+        override func setupInitialState() {
+            setupInitialStateDidCall = true
+        }
     }
 }
