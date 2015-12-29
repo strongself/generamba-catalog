@@ -15,9 +15,9 @@
 
 @interface {{ prefix }}{{ module_info.name }}ViewControllerTests : XCTestCase
 
-@property (strong, nonatomic) {{ prefix }}{{ module_info.name }}ViewController *controller;
+@property (nonatomic, strong) {{ prefix }}{{ module_info.name }}ViewController *controller;
 
-@property (strong, nonatomic) id mockOutput;
+@property (nonatomic, strong) id mockOutput;
 
 @end
 

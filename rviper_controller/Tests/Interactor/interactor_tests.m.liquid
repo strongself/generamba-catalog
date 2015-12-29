@@ -15,9 +15,9 @@
 
 @interface {{ prefix }}{{ module_info.name }}InteractorTests : XCTestCase
 
-@property (strong, nonatomic) {{ prefix }}{{ module_info.name }}Interactor *interactor;
+@property (nonatomic, strong) {{ prefix }}{{ module_info.name }}Interactor *interactor;
 
-@property (strong, nonatomic) id mockOutput;
+@property (nonatomic, strong) id mockOutput;
 
 @end
 
