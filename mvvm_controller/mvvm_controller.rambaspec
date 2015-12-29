@@ -16,6 +16,14 @@ code_files:
 - {name: ViewModel/ViewModel.h, path: Code/ViewModel/ViewModel.h.liquid}
 - {name: ViewModel/ViewModel.m, path: Code/ViewModel/ViewModel.m.liquid}
 
+# The declarations for test files
+test_files:
+# ViewController tests
+- {name: ViewController/ViewControllerTests.m, path: Tests/ViewController/viewcontroller_tests.m.liquid}
+
+# ViewModel tests
+- {name: ViewModel/ViewModelTests.m, path: Tests/ViewModel/viewmodel_tests.m.liquid}
+
 # Template dependencies
 dependencies:
 - Typhoon

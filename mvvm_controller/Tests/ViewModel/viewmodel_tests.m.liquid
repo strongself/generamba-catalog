@@ -1,0 +1,36 @@
+//
+//  {{ prefix }}{{ module_info.name }}{{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+#import <XCTest/XCTest.h>
+#import <OCMock/OCMock.h>
+
+#import "{{ prefix }}{{ module_info.name }}ViewModel.h"
+
+@interface {{ prefix }}{{ module_info.name }}ViewModelTests : XCTestCase
+
+@property (strong, nonatomic) {{ prefix }}{{ module_info.name }}ViewModel *viewModel;
+
+@end
+
+@implementation {{ prefix }}{{ module_info.name }}ViewModelTests
+
+- (void)setUp 
+{
+    [super setUp];
+
+    self.viewModel = [[{{ prefix }}{{ module_info.name }}ViewModel alloc] init];
+}
+
+- (void)tearDown 
+{
+    self.viewModel = nil;
+
+    [super tearDown];
+}
+
+@end
