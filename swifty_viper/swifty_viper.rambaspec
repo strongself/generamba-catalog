@@ -1,0 +1,49 @@
+# Template information section
+name: "swifty_viper"
+summary: "Swift VIPER module template with UIViewController playing as a View."
+author: "Valeriy Popov"
+version: "0.1.0"
+license: "MIT"
+
+# The declarations for code files
+
+code_files:
+# View layer
+- {name: View/ViewInput.swift,  path: Code/View/view_input.swift.liquid}
+- {name: View/ViewOutput.swift, path: Code/View/view_output.swift.liquid}
+- {name: View/ViewController.swift, path: Code/View/viewcontroller.swift.liquid}
+
+# Presenter layer
+- {name: Presenter/ModuleInput.swift, path: Code/Presenter/module_input.swift.liquid}
+- {name: Presenter/Presenter.swift, path: Code/Presenter/presenter.swift.liquid}
+
+# Interactor layer
+- {name: Interactor/InteractorInput.swift, path: Code/Interactor/interactor_input.swift.liquid}
+- {name: Interactor/InteractorOutput.swift, path: Code/Interactor/interactor_output.swift.liquid}
+- {name: Interactor/Interactor.swift, path: Code/Interactor/interactor.swift.liquid}
+
+# Router layer
+- {name: Router/RouterInput.swift, path: Code/Router/router_input.swift.liquid}
+- {name: Router/Router.swift, path: Code/Router/router.swift.liquid}
+
+# Configurator
+- {name: Configurator/Configurator.swift, path: Code/Configurator/configurator.swift.liquid}
+- {name: Configurator/Initializer.swift, path: Code/Configurator/initializer.swift.liquid}
+
+# The declarations for test files
+test_files:
+
+# Configurators tests
+- {name: Configurator/ConfiguratorTests.swift, path: Tests/Configurator/configurator_tests.swift.liquid}
+
+# View tests
+- {name: View/ViewTests.swift, path: Tests/View/view_tests.swift.liquid}
+
+# Interactor tests
+- {name: Interactor/InteractorTests.swift, path: Tests/Interactor/interactor_tests.swift.liquid}
+
+# Presenter tests
+- {name: Presenter/PresenterTests.swift, path: Tests/Presenter/presenter_tests.swift.liquid}
+
+# Router tests
+- {name: Router/RouterTests.swift, path: Tests/Router/router_tests.swift.liquid}
