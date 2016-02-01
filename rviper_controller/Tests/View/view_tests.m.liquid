@@ -3,7 +3,7 @@
 //  {{ module_info.project_name }}
 //
 //  Created by {{ developer.name }} on {{ date }}.
-//  Copyright {{ year }} {{ developer.company }}. All rights reserved.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
@@ -15,9 +15,9 @@
 
 @interface {{ prefix }}{{ module_info.name }}ViewControllerTests : XCTestCase
 
-@property (strong, nonatomic) {{ prefix }}{{ module_info.name }}ViewController *controller;
+@property (nonatomic, strong) {{ prefix }}{{ module_info.name }}ViewController *controller;
 
-@property (strong, nonatomic) id mockOutput;
+@property (nonatomic, strong) id mockOutput;
 
 @end
 
