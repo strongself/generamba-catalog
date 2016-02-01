@@ -14,6 +14,18 @@
 
 #pragma mark - Методы жизненного цикла
 
+- (instancetype)init
+{
+	 self.viewNode = [[{{ prefix }}{{ module_info.name }}DisplayNode alloc] init];
+	 self = [super initWithNode:self.viewNode];
+	 if (self)
+	 {
+
+	 }     
+
+         return self;
+}
+
 - (void)viewDidLoad {
 	[super viewDidLoad];
 

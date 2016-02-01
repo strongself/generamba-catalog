@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ASViewController.h"
 
 #import "{{ prefix }}{{ module_info.name }}ViewInput.h"
 
 @protocol {{ prefix }}{{ module_info.name }}ViewOutput;
 
-@interface {{ prefix }}{{ module_info.name }}ViewController : UIViewController <{{ prefix }}{{ module_info.name }}ViewInput>
+@interface {{ prefix }}{{ module_info.name }}ViewController : ASViewController <{{ prefix }}{{ module_info.name }}ViewInput>
 
 @property (nonatomic, strong) id<{{ prefix }}{{ module_info.name }}ViewOutput> output;
 
