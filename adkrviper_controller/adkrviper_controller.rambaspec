@@ -1,6 +1,6 @@
 # Template information section
 name: "adkrviper_controller"
-summary: "VIPER module template with ASViewController playing as a View. Used for AsyncDisplayKit. Powered on RVIPER template."
+summary: "VIPER module template with ASViewController playing as a View. Used for AsyncDisplayKit. And MVVM. Powered on RVIPER template."
 author: "Maksim Bunkov"
 version: "0.0.1"
 license: "MIT"
@@ -16,6 +16,12 @@ code_files:
 - {name: View/ViewOutput.h, path: Code/View/view_output.h.liquid}
 - {name: View/ViewController.h, path: Code/View/viewcontroller.h.liquid}
 - {name: View/ViewController.m, path: Code/View/viewcontroller.m.liquid}
+
+# ViewModels and subViews
+- {name: View/ViewModels/ViewModel.h, path: Code/View/ViewModels/viewmodel.h.liquid}
+- {name: View/ViewModels/ViewModel.m, path: Code/View/ViewModels/viewmodel.m.liquid}
+- {name: View/ViewNodes/DisplayNode.h, path: Code/View/ViewNodes/displaynode.h.liquid}
+- {name: View/ViewNodes/DisplayNode.m, path: Code/View/ViewNodes/displaynode.m.liquid}
 
 # Presenter layer
 - {name: Presenter/ModuleInput.h, path: Code/Presenter/module_input.h.liquid}
@@ -41,6 +47,7 @@ test_files:
 
 # View tests
 - {name: View/ViewControllerTests.m, path: Tests/View/view_tests.m.liquid}
+- {name: View/ViewModel.m, path: Tests/View/viewModel_tests.m.liquid}
 
 # Presenter tests
 - {name: Presenter/PresenterTests.m, path: Tests/Presenter/presenter_tests.m.liquid}

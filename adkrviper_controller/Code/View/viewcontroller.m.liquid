@@ -9,6 +9,8 @@
 #import <ViperMcFlurry/IntermoduleDataTransfer/RamblerViperModuleTransitionHandlerProtocol.h>
 #import "{{ prefix }}{{ module_info.name }}ViewController.h"
 #import "{{ prefix }}{{ module_info.name }}ViewOutput.h"
+#import "{{ prefix }}{{ module_info.name }}DisplayNode.h"
+#import "{{ prefix }}{{ module_info.name }}ViewModel.h"
 
 @interface {{ prefix }}{{ module_info.name }}ViewController() <RamblerViperModuleTransitionHandlerProtocol>
 @property (nonatomic, strong) {{ prefix }}{{ module_info.name }}DisplayNode  *viewNode;
