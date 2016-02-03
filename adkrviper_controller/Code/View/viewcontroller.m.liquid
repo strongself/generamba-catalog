@@ -23,11 +23,11 @@
 
 - (instancetype)init
 {
-	 self.viewNode = [[{{ prefix }}{{ module_info.name }}DisplayNode alloc] init];
-	 self = [super initWithNode:self.viewNode];
+	 {{ prefix }}{{ module_info.name }}DisplayNode *viewNode= [[{{ prefix }}{{ module_info.name }}DisplayNode alloc] init];
+	 self = [super initWithNode:viewNode];
 	 if (self)
 	 {
-
+	     self.viewNode = viewNode;
 	 }     
 
          return self;
