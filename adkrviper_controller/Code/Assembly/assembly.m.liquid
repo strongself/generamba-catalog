@@ -7,15 +7,25 @@
 //
 
 #import "{{ prefix }}{{ module_info.name }}Assembly.h"
-
 #import "{{ prefix }}{{ module_info.name }}ViewController.h"
 #import "{{ prefix }}{{ module_info.name }}Interactor.h"
 #import "{{ prefix }}{{ module_info.name }}Presenter.h"
 #import "{{ prefix }}{{ module_info.name }}Router.h"
-
 #import <ViperMcFlurry/ViperMcFlurry.h>
 
 @implementation {{ prefix }}{{ module_info.name }}Assembly
+
+- (id <RamblerViperModuleFactoryProtocol>)factory{{ module_info.name }}Module
+{
+    return [TyphoonDefinition withClass:[ZMTransactionViperModuleFactory class]
+                          configuration:^(TyphoonDefinition *definition) {
+                              [definition useInitializer:@selector(initWithAssembly:selectorName:)
+                                              parameters:^(TyphoonMethod *initializer) {
+                                                  [initializer injectParameterWith:self];
+                                                  [initializer injectParameterWith:@"view{{ module_info.name }}Module"];
+                                              }];
+                          }];
+}
 
 - ({{ prefix }}{{ module_info.name }}ViewController *)view{{ module_info.name }}Module {
     return [TyphoonDefinition withClass:[{{ prefix }}{{ module_info.name }}ViewController class]
