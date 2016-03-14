@@ -18,6 +18,6 @@
 @protocol RamblerViperModuleFactoryProtocol;
 @interface {{ prefix }}{{ module_info.name }}Assembly : TyphoonAssembly <RamblerInitialAssembly>
 
-- (id <RamblerViperModuleFactoryProtocol>)factory{{ prefix }}{{ module_info.name }}Module;
+- (id <RamblerViperModuleFactoryProtocol>)factory{{ module_info.name }}Module;
 
 @end
