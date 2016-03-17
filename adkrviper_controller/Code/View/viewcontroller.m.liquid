@@ -41,8 +41,9 @@
 
 #pragma mark - Методы {{ prefix }}{{ module_info.name }}ViewInput
 
-- (void)setupInitialState {
+- (void)setupInitialState:({{ prefix }}{{ module_info.name }}ViewModel *)viewModel {
 	// В этом методе происходит настройка параметров view, зависящих от ее жизненого цикла (создание элементов, анимации и пр.)
+	self.viewModel = viewModel;
 }
 
 @end

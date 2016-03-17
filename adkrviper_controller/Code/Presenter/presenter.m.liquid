@@ -12,6 +12,10 @@
 #import "{{ prefix }}{{ module_info.name }}InteractorInput.h"
 #import "{{ prefix }}{{ module_info.name }}RouterInput.h"
 
+@interface {{ prefix }}{{ module_info.name }}Presenter ()
+@property (nonatomic, strong) {{ prefix }}{{ module_info.name }}ViewModel *viewModel;
+@end
+
 @implementation {{ prefix }}{{ module_info.name }}Presenter
 
 #pragma mark - Методы {{ prefix }}{{ module_info.name }}ModuleInput
@@ -23,7 +27,9 @@
 #pragma mark - Методы {{ prefix }}{{ module_info.name }}ViewOutput
 
 - (void)didTriggerViewReadyEvent {
-	[self.view setupInitialState];
+	{{ prefix }}{{ module_info.name }}ViewModel *viewModel = [{{ prefix }}{{ module_info.name }}ViewModel new];
+	self.viewModel = viewModel;
+	[self.view setupInitialState:self.viewModel];
 }
 
 #pragma mark - Методы {{ prefix }}{{ module_info.name }}InteractorOutput
