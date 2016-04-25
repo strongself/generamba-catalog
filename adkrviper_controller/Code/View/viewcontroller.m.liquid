@@ -1,0 +1,49 @@
+//
+//  {{ prefix }}{{ module_info.name }}{{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+#import <ViperMcFlurry/IntermoduleDataTransfer/RamblerViperModuleTransitionHandlerProtocol.h>
+#import "{{ prefix }}{{ module_info.name }}ViewController.h"
+#import "{{ prefix }}{{ module_info.name }}ViewOutput.h"
+#import "{{ prefix }}{{ module_info.name }}DisplayNode.h"
+#import "{{ prefix }}{{ module_info.name }}ViewModel.h"
+
+@interface {{ prefix }}{{ module_info.name }}ViewController() <RamblerViperModuleTransitionHandlerProtocol>
+@property (nonatomic, strong) {{ prefix }}{{ module_info.name }}DisplayNode  *viewNode;
+@property (nonatomic, strong) {{ prefix }}{{ module_info.name }}ViewModel    *viewModel;
+@end
+
+@implementation {{ prefix }}{{ module_info.name }}ViewController
+
+#pragma mark - Методы жизненного цикла
+
+- (instancetype)init
+{
+	 {{ prefix }}{{ module_info.name }}DisplayNode *viewNode= [[{{ prefix }}{{ module_info.name }}DisplayNode alloc] init];
+	 self = [super initWithNode:viewNode];
+	 if (self)
+	 {
+	     self.viewNode = viewNode;
+	 }     
+
+         return self;
+}
+
+- (void)viewDidLoad {
+	[super viewDidLoad];
+
+	[self.output didTriggerViewReadyEvent];
+}
+
+#pragma mark - Методы {{ prefix }}{{ module_info.name }}ViewInput
+
+- (void)setupInitialState:({{ prefix }}{{ module_info.name }}ViewModel *)viewModel {
+	// В этом методе происходит настройка параметров view, зависящих от ее жизненого цикла (создание элементов, анимации и пр.)
+	self.viewModel = viewModel;
+}
+
+@end
