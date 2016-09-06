@@ -12,3 +12,4 @@ The detailed information about a template structure is available in [Generamba W
 - [mvvm_controller](https://github.com/rambler-ios/generamba-catalog/blob/master/mvvm_controller/mvvm_controller.rambaspec)
 - [rviper_controller](https://github.com/rambler-ios/generamba-catalog/blob/master/rviper_controller/rviper_controller.rambaspec)
 - [swifty_viper](https://github.com/rambler-ios/generamba-catalog/blob/master/swifty_viper/swifty_viper.rambaspec)
+- [swifty_viper_OSX](https://github.com/rambler-ios/generamba-catalog/blob/master/swifty_viper_OSX/swifty_viper_OSX.rambaspec)
