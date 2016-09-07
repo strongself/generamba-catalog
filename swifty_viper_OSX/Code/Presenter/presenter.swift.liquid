@@ -1,0 +1,18 @@
+//
+//  {{ module_info.name }}{{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+class {{ module_info.name }}Presenter: {{ module_info.name }}ModuleInput, {{ module_info.name }}ViewOutput, {{ module_info.name }}InteractorOutput {
+
+    weak var view: {{ module_info.name }}ViewInput!
+    var interactor: {{ module_info.name }}InteractorInput!
+    var router: {{ module_info.name }}RouterInput!
+
+    func viewIsReady() {
+
+    }
+}
