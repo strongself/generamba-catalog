@@ -13,7 +13,7 @@ class {{ module_info.name }}ModuleConfigurator {
     func configureModuleForViewInput<UIViewController>(viewInput: UIViewController) {
 
         if let viewController = viewInput as? {{ module_info.name }}ViewController {
-            configure(viewController)
+            configure(viewController: viewController)
         }
     }
 
