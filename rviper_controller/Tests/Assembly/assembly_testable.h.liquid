@@ -7,6 +7,11 @@
 @class {{ prefix }}{{ module_info.name }}Presenter;
 @class {{ prefix }}{{ module_info.name }}Router;
 
+/**
+ @author {{ developer.name }}
+
+ Extension, который делает приватные методы фабрики открытыми для тестирования. 
+ */
 @interface {{ prefix }}{{ module_info.name }}Assembly ()
 
 - ({{ prefix }}{{ module_info.name }}ViewController *)view{{ module_info.name }};
