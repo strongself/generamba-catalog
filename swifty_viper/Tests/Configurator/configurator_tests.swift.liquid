@@ -27,7 +27,7 @@ class {{ module_info.name }}ModuleConfiguratorTests: XCTestCase {
         let configurator = {{ module_info.name }}ModuleConfigurator()
 
         //when
-        configurator.configureModuleForViewInput(viewController)
+        configurator.configureModuleForViewInput(viewInput: viewController)
 
         //then
         XCTAssertNotNil(viewController.output, "{{ module_info.name }}ViewController is nil after configuration")
