@@ -49,4 +49,26 @@
                           }];
 }
 
+- (id<RamblerViperModuleFactoryProtocol>)factory{{ prefix }}{{ module_info.name }} {
+    return [TyphoonDefinition withClass:[RamblerViperModuleFactory class]
+                          configuration:^(TyphoonDefinition *definition) {
+                              [definition useInitializer:@selector(initWithViewControllerLoader:andViewControllerIdentifier:)
+                                              parameters:^(TyphoonMethod *initializer) {
+                                                  [initializer injectParameterWith:[self nibLoader{{ prefix }}{{ module_info.name }}]];
+                                                  [initializer injectParameterWith:@"{{ prefix }}{{ module_info.name }}ViewController"];
+                                              }];
+                          }];
+}
+
+- (id)nibLoader{{ prefix }}{{ module_info.name }} {
+    return [TyphoonDefinition withClass:[TyphoonNibLoader class]
+                          configuration:^(TyphoonDefinition *definition) {
+                              [definition useInitializer:@selector(nibLoaderWithFactory:bundle:)
+                                              parameters:^(TyphoonMethod *initializer) {
+                                                  [initializer injectParameterWith:self];
+                                                  [initializer injectParameterWith:nil];
+                                              }];
+                          }];
+}
+
 @end
