@@ -1,0 +1,123 @@
+//
+//  {{ prefix }}{{ module_info.name }} - {{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+@testable import {{ module_info.project_name | split: "-" | join: "_" }}
+import Swinject
+import Quick
+import Nimble
+
+class {{ module_info.name }}AssemblyTests: QuickSpec {
+    override func spec() {
+        describe("{{ module_info.name }} assembly") {
+            context("separate registration") {
+                var assembler: Assembler!
+                var resolver: Resolver { return assembler.resolver }
+                beforeEach {
+                    assembler = {{ module_info.name }}Module.assemble(root: nil).assembler
+                }
+                it("register Interactor") {
+                    expect({ resolver.resolve({{ module_info.name }}Interactor.self) }).toNot(beNil())
+                }
+                it("register Interactor Input") {
+                    expect({ resolver.resolve({{ module_info.name }}InteractorInput.self) }).toNot(beNil())
+                }
+                it("register Router") {
+                    expect({ resolver.resolve({{ module_info.name }}Router.self) }).toNot(beNil())
+                }
+                it("register Router Input") {
+                    expect({ resolver.resolve({{ module_info.name }}RouterInput.self) }).toNot(beNil())
+                }
+                it("register Presenter") {
+                    expect({ resolver.resolve({{ module_info.name }}Presenter.self) }).toNot(beNil())
+                }
+                it("register Module Input") {
+                    expect({ resolver.resolve({{ module_info.name }}ModuleInput.self) }).toNot(beNil())
+                }
+                it("register Interactor Output") {
+                    expect({ resolver.resolve({{ module_info.name }}InteractorOutput.self) }).toNot(beNil())
+                }
+                it("register View Output") {
+                    expect({ resolver.resolve({{ module_info.name }}ViewOutput.self) }).toNot(beNil())
+                }
+                it("register View") {
+                    expect({ resolver.resolve({{ module_info.name }}ViewController.self) }).toNot(beNil())
+                }
+                it("register View Input") {
+                    expect({ resolver.resolve({{ module_info.name }}ViewInput.self) }).toNot(beNil())
+                }
+            }
+            context("full stack resolve") {
+                var moduleOutput: {{ module_info.name }}ModuleOutput!
+                var module: {{ module_info.name }}Module!
+                beforeEach {
+                    moduleOutput = MockModuleOutput()
+                    module = {{ module_info.name }}Module.assemble(root: nil, output: moduleOutput)
+                }
+                it("setup view in module") {
+                    expect(module.view).toNot(beNil())
+                }
+                it("setup module input in module") {
+                    expect(module.input).toNot(beNil())
+                }
+                it("resolve module input and presenter as same object") {
+                    let presenter = module.view?.output as? {{ module_info.name }}Presenter
+                    expect(presenter) === module.input
+                }
+                it("setup weak output for presenter") {
+                    let presenter = module.view!.output as! {{ module_info.name }}Presenter
+                    expect(presenter.output).toNot(beNil())
+                }
+                it("resolve presenter module output as mock object") {
+                    let presenter = module.view!.output as! {{ module_info.name }}Presenter
+                    expect(presenter.output) === moduleOutput
+                }
+                it("setup weak view for presenter") {
+                    let presenter = module.view!.output as! {{ module_info.name }}Presenter
+                    expect(presenter.view).toNot(beNil())
+                }
+                it("resolve presenter view and view as same object") {
+                    let presenter = module.view!.output as! {{ module_info.name }}Presenter
+                    expect(presenter.view) === module.view
+                }
+                it("setup weak interactor output") {
+                    let presenter = module.view!.output as! {{ module_info.name }}Presenter
+                    let interactor = presenter.interactor as! {{ module_info.name }}Interactor
+                    expect(interactor.output).toNot(beNil())
+                }
+                it("resolve interactor output and presenter as same object") {
+                    let presenter = module.view!.output as! {{ module_info.name }}Presenter
+                    let interactor = presenter.interactor as! {{ module_info.name }}Interactor
+                    expect(interactor.output) === presenter
+                }
+                it("setup router assembler") {
+                    let presenter = module.view!.output as! {{ module_info.name }}Presenter
+                    let router = presenter.router as! {{ module_info.name }}Router
+                    expect(router.assembler).toNot(beNil())
+                }
+                it("resolve router assembler and module assembler as same object") {
+                    let presenter = module.view!.output as! {{ module_info.name }}Presenter
+                    let router = presenter.router as! {{ module_info.name }}Router
+                    expect(router.assembler) === module.assembler
+                }
+                it("setup router transition handler") {
+                    let presenter = module.view!.output as! {{ module_info.name }}Presenter
+                    let router = presenter.router as! {{ module_info.name }}Router
+                    expect(router.transitionHandler).toNot(beNil())
+                }
+                it("resolve router transition handler and module view as same object") {
+                    let presenter = module.view!.output as! {{ module_info.name }}Presenter
+                    let router = presenter.router as! {{ module_info.name }}Router
+                    expect(router.transitionHandler) === module.view
+                }
+            }
+        }
+    }
+
+    class MockModuleOutput: {{ module_info.name }}ModuleOutput {
+    }
+}

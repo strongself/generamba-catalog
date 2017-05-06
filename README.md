@@ -13,3 +13,4 @@ The detailed information about a template structure is available in [Generamba W
 - [rviper_controller](https://github.com/rambler-digital-solutions/generamba-catalog/blob/master/rviper_controller/rviper_controller.rambaspec)
 - [swifty_viper](https://github.com/rambler-digital-solutions/generamba-catalog/blob/master/swifty_viper/swifty_viper.rambaspec)
 - [swifty_viper_OSX](https://github.com/rambler-digital-solutions/generamba-catalog/blob/master/swifty_viper_OSX/swifty_viper_OSX.rambaspec)
+- [viperify](https://github.com/rambler-digital-solutions/generamba-catalog/blob/master/viperify/viperify.rambaspec) ([template repo](https://github.com/ManWithBear/Viperify))

@@ -1,0 +1,121 @@
+//
+//  {{ prefix }}{{ module_info.name }} - {{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import Foundation
+import Swinject
+
+// swiftlint:disable force_cast
+class {{ module_info.name }}Module {
+    fileprivate(set) var assembler: Assembler?
+    fileprivate(set) var view: {{ module_info.name }}ViewController?
+    weak fileprivate(set) var input: {{ module_info.name }}ModuleInput?
+
+    static func assemble(root: Assembler?, output: {{ module_info.name }}ModuleOutput? = nil) -> {{ module_info.name }}Module {
+        let assembler = Assembler([
+            {{ module_info.name }}InteractorAssembly(),
+            {{ module_info.name }}RouterAssembly(),
+            {{ module_info.name }}PresenterAssembly(),
+            {{ module_info.name }}ViewAssembly(),
+            {{ module_info.name }}ModuleAssembly()
+            ], parent: root)
+        return assembler.resolver.resolve({{ module_info.name }}Module.self, arguments: assembler, output)!
+    }
+}
+
+private class {{ module_info.name }}InteractorAssembly: Assembly {
+    func assemble(container: Container) {
+        container.register({{ module_info.name }}Interactor.self) { _ in
+            return {{ module_info.name }}Interactor()
+        }.initCompleted { r, interactor in
+            interactor.output = r.resolve()
+        }
+
+        container.register({{ module_info.name }}InteractorInput.self) { r in
+            return r.resolve({{ module_info.name }}Interactor.self)!
+        }
+    }
+}
+
+private class {{ module_info.name }}RouterAssembly: Assembly {
+    func assemble(container: Container) {
+        container.register({{ module_info.name }}Router.self) { _ in
+            return {{ module_info.name }}Router()
+        }.initCompleted { (r, router) in
+            router.transitionHandler = r.resolve()
+        }
+
+        container.register({{ module_info.name }}Router.self) { (r, assembler: Assembler) in
+            let router: {{ module_info.name }}Router = r.resolve()!
+            router.assembler = assembler
+            return router
+        }
+
+        container.register({{ module_info.name }}RouterInput.self) { r in
+            return r.resolve({{ module_info.name }}Router.self)!
+        }
+    }
+}
+
+private class {{ module_info.name }}PresenterAssembly: Assembly {
+    func assemble(container: Container) {
+        container.register({{ module_info.name }}Presenter.self) { r in
+            return {{ module_info.name }}Presenter(interactorInput: r.resolve()!, routerInput: r.resolve()!)
+        }.initCompleted { (r, presenter) in
+            presenter.view = r.resolve()
+        }
+
+        container.register({{ module_info.name }}Presenter.self) { (r, output: {{ module_info.name }}ModuleOutput?) in
+            let presenter: {{ module_info.name }}Presenter = r.resolve()!
+            presenter.output = output
+            return presenter
+        }
+
+        container.register({{ module_info.name }}ModuleInput.self) { r in
+            return r.resolve({{ module_info.name }}Presenter.self)!
+        }
+
+        container.register({{ module_info.name }}InteractorOutput.self) { r in
+            return r.resolve({{ module_info.name }}Presenter.self)!
+        }
+
+        container.register({{ module_info.name }}ViewOutput.self) { r in
+            return r.resolve({{ module_info.name }}Presenter.self)!
+        }
+    }
+}
+
+private class {{ module_info.name }}ViewAssembly: Assembly {
+    func assemble(container: Container) {
+        container.register({{ module_info.name }}ViewController.self) { r in
+            return {{ module_info.name }}ViewController(viewOutput: r.resolve()!)
+        }
+
+        container.register({{ module_info.name }}ViewInput.self) { r in
+            return r.resolve({{ module_info.name }}ViewController.self)!
+        }
+
+        container.register({{ module_info.name }}TransitionHandler.self) { r in
+            return r.resolve({{ module_info.name }}ViewController.self)!
+        }
+    }
+}
+
+private class {{ module_info.name }}ModuleAssembly: Assembly {
+    func assemble(container: Container) {
+        container.register({{ module_info.name }}Module.self, factory: { (r, assembler: Assembler, output: {{ module_info.name }}ModuleOutput?) in
+            let module: {{ module_info.name }}Module = {{ module_info.name }}Module()
+            module.view = r.resolve()
+            module.input = r.resolve()
+            _ = r.resolve({{ module_info.name }}Router.self, argument: assembler)
+            _ = r.resolve({{ module_info.name }}Presenter.self, argument: output)
+            module.assembler = assembler
+            return module
+        })
+    }
+}
+// swiftlint:enable force_cast

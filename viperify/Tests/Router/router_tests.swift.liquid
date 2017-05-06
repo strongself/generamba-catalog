@@ -1,0 +1,27 @@
+//
+//  {{ prefix }}{{ module_info.name }} - {{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+@testable import {{ module_info.project_name | split: "-" | join: "_" }}
+import Quick
+import Nimble
+
+class {{ module_info.name }}RouterTests: QuickSpec {
+    override func spec() {
+        describe("{{ module_info.name }} router") {
+            var router: {{ module_info.name }}Router!
+            var handler: Mock{{ module_info.name }}TransitionHandler!
+            beforeEach {
+                handler = Mock{{ module_info.name }}TransitionHandler()
+                router = {{ module_info.name }}Router()
+                router.transitionHandler = handler
+            }
+        }
+    }
+
+    class Mock{{ module_info.name }}TransitionHandler: MockTransitionHandler, {{ module_info.name }}TransitionHandler { }
+}

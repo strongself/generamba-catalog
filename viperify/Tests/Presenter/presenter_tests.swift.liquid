@@ -1,0 +1,42 @@
+//
+//  {{ prefix }}{{ module_info.name }} - {{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+@testable import {{ module_info.project_name | split: "-" | join: "_" }}
+import Quick
+import Nimble
+
+class {{ module_info.name }}PresenterTest: QuickSpec {
+    override func spec() {
+        describe("{{ module_info.name }} presenter") {
+            var presenter: {{ module_info.name }}Presenter!
+            var view: MockViewController!
+            var interactor: MockInteractor!
+            var router: MockRouter!
+            beforeEach {
+                interactor = MockInteractor()
+                router = MockRouter()
+                view = MockViewController()
+                presenter = {{ module_info.name }}Presenter(interactorInput: interactor, routerInput: router)
+                presenter.view = view
+            }
+        }
+    }
+
+    class MockInteractor: {{ module_info.name }}InteractorInput {
+    }
+
+    class MockRouter: {{ module_info.name }}RouterInput {
+    }
+
+    class MockViewController: {{ module_info.name }}ViewInput {
+        var didCallSetupInitialState = false
+        func setupInitialState() {
+            didCallSetupInitialState = true
+        }
+    }
+}
