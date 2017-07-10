@@ -1,0 +1,29 @@
+{% include 'header' %}
+
+import UIKit
+
+protocol {{ prefix }}{{ module_info.name }}DisplayManagerItem: NSObjectProtocol {
+    //describe the required parameters
+}
+
+protocol {{ prefix }}{{ module_info.name }}DisplayManagerDelegate: NSObjectProtocol {
+    //extend delegate methods if need
+    func displayManager(manager: {{ prefix }}{{ module_info.name }}DisplayManagerProtocol, didTapItem: {{ prefix }}{{ module_info.name }}DisplayManagerItem)
+}
+
+protocol {{ prefix }}{{ module_info.name }}DisplayManagerProtocol: NSObjectProtocol, UITableViewDelegate, UITableViewDataSource {
+    weak var delegate: {{ prefix }}{{ module_info.name }}DisplayManagerDelegate? { get set }
+    weak var tableView: UITableView? { get set }
+    
+    var items: [{{ prefix }}{{ module_info.name }}DisplayManagerItem] { get }
+    func config(items: [{{ prefix }}{{ module_info.name }}DisplayManagerItem])
+    
+    func reloadData()
+    
+    func insertElement(item: {{ prefix }}{{ module_info.name }}DisplayManagerItem, index: Int, animation: UITableViewRowAnimation)
+    func deleteElement(index: Int, animation: UITableViewRowAnimation)
+    func reloadElement(index: Int, animation: UITableViewRowAnimation)
+    func moveElement(fromIndex: Int, toIndex: Int, animation: UITableViewRowAnimation)
+    func performBatchUpdates(_ updates: (() -> Swift.Void)?) // allows multiple insert/delete/reload/move calls to be animated simultaneously. Nestable.
+    
+}

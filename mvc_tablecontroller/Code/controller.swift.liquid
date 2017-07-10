@@ -1,0 +1,112 @@
+{% include 'header' %}
+
+import UIKit
+import SwinjectStoryboard
+
+class {{ prefix }}{{ module_info.name }}ViewController: UIViewController, {{ prefix }}{{ module_info.name }}DisplayManagerDelegate {
+    
+    typealias Model = <#{{ prefix }}{{ module_info.name }}#>
+    
+    /*
+    enum Segues: String {
+        case <#name#> = <#identifier#>
+    }
+    */
+    
+    //MARK: - UI
+    @IBOutlet weak var tableView: UITableView!
+    
+    //MARK: -
+    var displayManager: {{ prefix }}{{ module_info.name }}DisplayManagerProtocol! {
+        didSet {
+            self.displayManager.delegate = self
+        }
+    }
+    
+    private(set) var models: [Model] = [] {
+        didSet {
+            self.reloadTable()
+        }
+    }
+    
+    //MARK: - init, config and deinit
+    func config(models: [Model]) {
+        self.models = models
+        self.displayManager.config(items: models)
+    }
+    
+    //MARK: - life cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.configureView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+    }
+    
+    /*
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case Segues.<#name#>.rawValue?:
+        default: fatalError("\(segue) not implemented")
+        }
+    }
+     */
+    
+    deinit {}
+    
+    //MARK: - {{ prefix }}{{ module_info.name }}DisplayManagerDelegate
+    func displayManager(manager: {{ prefix }}{{ module_info.name }}DisplayManagerProtocol, didTapItem: {{ prefix }}{{ module_info.name }}DisplayManagerItem) {
+        //do something
+    }
+}
+
+//MARK: - Updating the view
+extension {{ prefix }}{{ module_info.name }}ViewController {
+    
+    func configureView() {
+        self.displayManager.tableView = self.tableView
+    }
+    
+    func reloadTable() {
+        self.displayManager?.reloadData()
+    }
+}
+
+//MARK: - Routing
+extension {{ prefix }}{{ module_info.name }}ViewController {
+//    func perfrom<#name#>Segue() {
+//        self.performSegue(withIdentifier: Segues.<#name#>.rawValue, sender: nil)
+//    }
+}
+
+//MARK: - Depedency
+extension {{ prefix }}{{ module_info.name }}ViewController {
+    class func registerDepedency() {
+        SwinjectStoryboard.defaultContainer.storyboardInitCompleted({{ prefix }}{{ module_info.name }}ViewController.self) { r, c in
+            c.displayManager = r.resolve({{ prefix }}{{ module_info.name }}DisplayManagerProtocol.self)
+        }
+        SwinjectStoryboard.defaultContainer.register({{ prefix }}{{ module_info.name }}DisplayManagerProtocol.self) { _ in
+            return {{ prefix }}{{ module_info.name }}DisplayManager()
+        }
+    }
+}
+
+//MARK: -
+extension {{ prefix }}{{ module_info.name }}ViewController.Model: {{ prefix }}{{ module_info.name }}DisplayManagerItem {
+    //extend model
+}

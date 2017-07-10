@@ -1,0 +1,25 @@
+# Template information section
+name: "mvc_tablecontroller"
+summary: "MVC module template with UIViewController and UITableView"
+author: "Vladimir Goncharov"
+version: "1.0"
+license: "MIT"
+
+# The declarations for code files
+code_files:
+# Controller
+- {name: ViewController.swift, path: Code/controller.swift.liquid}
+
+# Display manager
+- {name: DisplayManager/DisplayManager.swift, path: Code/DisplayManager/manager.swift.liquid}
+- {name: DisplayManager/DisplayManagerProtocol.swift, path: Code/DisplayManager/protocol.swift.liquid}
+
+# The declarations for test files
+test_files:
+# Controller tests
+- {name: Assembly/ViewControllerTests.swift, path: Tests/controller_tests.swift.liquid}
+
+# Template dependencies
+dependencies:
+- Swinject
+- SwinjectStoryboard

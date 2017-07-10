@@ -1,0 +1,36 @@
+{% include 'header' %}
+
+import UIKit
+import SwinjectStoryboard
+@testable import {{ module_info.project_targets.first }}
+
+class {{ prefix }}{{ module_info.name }}ViewControllerTests: XCTestCase {
+    
+    var instance: {{ prefix }}{{ module_info.name }}ViewController!
+    
+    override func setUp() {
+        super.setUp()
+        
+        {{ prefix }}{{ module_info.name }}ViewControllerTests.registerTestsDepedency()
+        
+        self.instance = SwinjectStoryboard.create(name: "Main", bundle: nil, container: SwinjectStoryboard.defaultContainer).instantiateViewController(withIdentifier: <#storyboardIdentifier#>) as! {{ prefix }}{{ module_info.name }}ViewController
+        XCTAssertNotNil(self.instance.view)
+        XCTAssertNotNil(self.instance.displayManager)
+        XCTAssertNotNil(self.instance.displayManager.tableView)
+        XCTAssertNotNil(self.instance.displayManager.delegate)
+    }
+    
+    override func tearDown() {
+        self.instance = nil
+        super.tearDown()
+    }
+    
+    class func registerTestsDepedency() {
+        //do something or override registrations
+    }
+    
+    //MARK: - Tests
+    func testExample() {
+        //do test!
+    }
+}
