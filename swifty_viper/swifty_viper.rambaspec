@@ -26,15 +26,14 @@ code_files:
 - {name: Router/RouterInput.swift, path: Code/Router/router_input.swift.liquid}
 - {name: Router/Router.swift, path: Code/Router/router.swift.liquid}
 
-# Configurator
-- {name: Configurator/Configurator.swift, path: Code/Configurator/configurator.swift.liquid}
-- {name: Configurator/Initializer.swift, path: Code/Configurator/initializer.swift.liquid}
+# Assembly
+- {name: Assembly/Assembly.swift, path: Code/Assembly/assembly.swift.liquid}
 
 # The declarations for test files
 test_files:
 
-# Configurators tests
-- {name: Configurator/ConfiguratorTests.swift, path: Tests/Configurator/configurator_tests.swift.liquid}
+# Assembly tests
+- {name: Assembly/AssemblyTests.swift, path: Tests/Assembly/assembly_tests.swift.liquid}
 
 # View tests
 - {name: View/ViewTests.swift, path: Tests/View/view_tests.swift.liquid}
