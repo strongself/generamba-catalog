@@ -1,0 +1,27 @@
+{% include 'header' %}
+
+import UIKit
+
+final class {{ module_info.name }}Assembly {
+
+    func createModule(_ configure: (_ module: {{ module_info.name }}ModuleInput) -> Void) -> {{ module_info.name }}ViewController {
+
+        let view = {{ module_info.name }}ViewController()
+        let interactor = {{ module_info.name }}Interactor()
+        let presenter = {{ module_info.name }}Presenter()
+        let router = {{ module_info.name }}Router()
+
+        view.output = presenter
+
+        interactor.output = presenter
+
+        presenter.view = view
+        presenter.interactor = interactor
+        presenter.router = router
+        configure(presenter)
+        
+        router.viewController = view
+
+        return view
+    }
+}

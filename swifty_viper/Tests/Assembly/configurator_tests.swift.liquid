@@ -24,10 +24,12 @@ class {{ module_info.name }}ModuleConfiguratorTests: XCTestCase {
 
         //given
         let viewController = {{ module_info.name }}ViewControllerMock()
-        let configurator = {{ module_info.name }}ModuleConfigurator()
+        let assembly = {{ module_info.name }}Assembly()
 
         //when
-        configurator.configureModuleForViewInput(viewInput: viewController)
+        let result = configurator.createModule { moduleInput in
+            <#configure your presenter here#>
+        }
 
         //then
         XCTAssertNotNil(viewController.output, "{{ module_info.name }}ViewController is nil after configuration")
