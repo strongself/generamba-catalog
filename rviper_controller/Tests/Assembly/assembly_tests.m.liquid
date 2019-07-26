@@ -45,13 +45,13 @@
     NSArray *dependencies = @[
                               RamblerSelector(output)
                               ];
-
-    // when
-    id result = [self.assembly view{{ module_info.name }}Module];
-
-    // then
     RamblerTyphoonAssemblyTestsTypeDescriptor *descriptor = [RamblerTyphoonAssemblyTestsTypeDescriptor descriptorWithClass:targetClass
                                                                                                               andProtocols:protocols];
+
+    // when
+    id result = [self.assembly view{{ module_info.name }}];
+
+    // then
     [self verifyTargetDependency:result
                   withDescriptor:descriptor
                     dependencies:dependencies];
@@ -70,13 +70,13 @@
                               RamblerSelector(view),
                               RamblerSelector(router)
                               ];
-
-    // when
-    id result = [self.assembly presenter{{ module_info.name }}Module];
-
-    // then
     RamblerTyphoonAssemblyTestsTypeDescriptor *descriptor = [RamblerTyphoonAssemblyTestsTypeDescriptor descriptorWithClass:targetClass
                                                                                                               andProtocols:protocols];
+
+    // when
+    id result = [self.assembly presenter{{ module_info.name }}];
+
+    // then
     [self verifyTargetDependency:result
                   withDescriptor:descriptor
                     dependencies:dependencies];
@@ -91,13 +91,13 @@
     NSArray *dependencies = @[
                               RamblerSelector(output)
                               ];
-
-    // when
-    id result = [self.assembly interactor{{ module_info.name }}Module];
-
-    // then
     RamblerTyphoonAssemblyTestsTypeDescriptor *descriptor = [RamblerTyphoonAssemblyTestsTypeDescriptor descriptorWithClass:targetClass
                                                                                                               andProtocols:protocols];
+													      
+    // when
+    id result = [self.assembly interactor{{ module_info.name }}];
+
+    // then
     [self verifyTargetDependency:result
                   withDescriptor:descriptor
                     dependencies:dependencies];
@@ -112,13 +112,13 @@
     NSArray *dependencies = @[
                               RamblerSelector(transitionHandler)
                               ];
-
-    // when
-    id result = [self.assembly router{{ module_info.name }}Module];
-
-    // then
     RamblerTyphoonAssemblyTestsTypeDescriptor *descriptor = [RamblerTyphoonAssemblyTestsTypeDescriptor descriptorWithClass:targetClass
                                                                                                               andProtocols:protocols];
+
+    // when
+    id result = [self.assembly router{{ module_info.name }}];
+
+    // then
     [self verifyTargetDependency:result
                   withDescriptor:descriptor
                     dependencies:dependencies];
